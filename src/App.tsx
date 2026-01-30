@@ -8,10 +8,10 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route
-      path="/" element={<Home/>}
+      path="/React_vite_CI-CD" element={<Home/>}
       />
       <Route
-      path='detail/:id' element={<ProductDetailPage/>}
+      path='/React_vite_CI-CD/detail/:id' element={<ProductDetailPage/>}
       />
     </Routes>
     </BrowserRouter>
