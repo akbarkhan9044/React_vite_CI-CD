@@ -3,7 +3,11 @@ name: Deploy React + Vite to GitHub Pages
 on:
   push:
     branches:
-      - main  # Make sure this matches your default branch name
+      - main
+
+# This is the critical fix for the 403 error
+permissions:
+  contents: write
 
 jobs:
   build-deploy:
@@ -28,5 +32,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # Vite builds into the 'dist' folder
-          branch: gh-pages # The branch where the site lives
+          folder: dist # Vite outputs to 'dist'
+          branch: gh-pages # The deployment target branch
+          clean: true # Automatically remove deleted files from the deployment branch
