@@ -14,7 +14,7 @@ export default defineConfig({
   base:"/React_vite_CI-CD/",
   server:{
     open:true,
-    port:3001
+    port:3002
   },
   resolve: {
     alias: {
