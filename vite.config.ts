@@ -11,6 +11,11 @@ export default defineConfig({
     }),
     tailwindcss()
   ],
+  base:"/React_vite_CI-CD/",
+  server:{
+    open:true,
+    port:3001
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
