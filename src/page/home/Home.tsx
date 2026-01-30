@@ -45,7 +45,7 @@ export default function Home() {
       </CardHeader>
       <CardFooter>
         <Button
-        onClick={()=>{navigate(`/detail/${item.id}`)}}
+        onClick={()=>{navigate(`/React_vite_CI-CD/detail/${item.id}`)}}
         variant="outline" className="w-full bg-orange-300 border-0">View Event</Button>
       </CardFooter>
     </Card>
