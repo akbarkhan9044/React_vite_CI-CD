@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# This is the critical fix for the 403 error
 permissions:
   contents: write
 
@@ -26,12 +25,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # --- LINTING STEP ---
+      - name: Run Linter
+        run: npm run lint
+
+      # --- TYPE CHECK (Optional but recommended for TS) ---
+      # This ensures your TypeScript is valid before building
+      - name: Type Check
+        run: npx tsc --noEmit
+
       - name: Build project
         run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # Vite outputs to 'dist'
-          branch: gh-pages # The deployment target branch
-          clean: true # Automatically remove deleted files from the deployment branch
+          folder: dist
+          branch: gh-pages
+          clean: true

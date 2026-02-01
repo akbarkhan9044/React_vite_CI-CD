@@ -14,13 +14,21 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
     const navigate=useNavigate();
     const [result,setResult]=useState<Product[]>([]);
-    const  fetchData=async()=>{
-        const response=await fetch("https://fakestoreapi.com/products");
-        const resp:Product[]=await response.json();
-        console.log("Response is :",resp);
-        setResult(resp);
-    }
+
     useEffect(()=>{
+      // Fix: Moving fetchData inside useEffect clears the lint warning
+      const fetchData = async () => {
+        try {
+    
+          const response = await fetch("https://fakestoreapi.com/products");
+          const resp: Product[] = await response.json();
+          setResult(resp);
+        } catch (error) {
+          console.error("Fetch error:", error);
+        } 
+      };
+
+      fetchData();
         fetchData();
     },[])
   return (

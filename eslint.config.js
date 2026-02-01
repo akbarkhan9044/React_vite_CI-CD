@@ -19,5 +19,14 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'off',
+        { allowConstantExport: true }, // Add this line here
+      ],
+      // You can also add your other strict rules here:
+      'no-unused-vars': 'error',
+    },
   },
 ])
